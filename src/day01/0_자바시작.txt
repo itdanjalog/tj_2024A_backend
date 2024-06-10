@@ -1,0 +1,88 @@
+프로그램 : 명령의 집합
+프로그래머 : 프로그램 만드는 사람
+프로그래밍 : 프로그램 만드는 일
+프로그래밍 언어 : 명령(코드) 의 집합
+컴파일 : 컴퓨터가 이해할수 있는 언어로 번역 작업
+컴파일러 : 번역 작업을 하는 프로그램
+기계어 : 컴퓨터가 이해할수 있는 언어 , 0 과 1 로 이루어져 있음
+고급언어(사람이해)  저급언어(컴퓨터이해)
+
+
+
+
+안녕(한국어)출력  ------> CONSOLE.LOG( ) ----- 컴파일 ----> 컴퓨터
+			명령어(코드)		   0 / 1
+
+
+
+자바 사용하는 이유
+	1. 운영체제로 부터 독립적이다. JVM 이해
+	2. 객체지향 , 유지보수 와 확장성이 좋다
+	3. 안정적이다 , 메모리 효율적 ( GC )
+	4. 풍부한 기능( 미리 만들어진 코드/함수 제공 new Date , Math 등등 )과 오픈 소스
+		- Spring 프레임워크
+자바 사용처
+	- 웹 , 앱 , 소프트웨어
+
+자바 IDE
+	1. 이클립스( 무료 )
+	2. 인텔리제이 ( 무료 , 유료 )
+
+인텔리제이 설치
+	1. 구글검색 : 인텔리제이
+	2. https://www.jetbrains.com/ko-kr/idea/
+	3. 다운로드
+		IntelliJ IDEA Ultimate 유료 ( 30일 무료 , 유효기간학생증 1년간 무료 )
+		IntelliJ IDEA Community Edition 무료
+	4. IntelliJ IDEA Community Edition 다운로드
+
+	5. ideaIC-2024.1.2. exe   실행
+		다음 -> 다음 -> 옵션 ( 모두 체크 ) -> 다음 -> 완료
+	6. 바탕화면 아이콘 확인
+
+
+인텔리제이 실행
+	1. new Project
+	- name : tj_2024A_backend    ( 임의 )
+	- location : 바탕화면( ~\Desktop )   	(임의 )
+	- build system : intellij
+	- JDK
+		최초 설치
+			1. download jdk
+			- version : 17	( 1.8 이상 임의 )
+			- vendor : amazon ( 임의 )
+			- location : 기본값
+	2. create
+
+- JDK : 자바 개발 도구 [ p.24 ]
+
+인텔리제이의 이것저것
+	1. 테마 : 상단메뉴 -> file -> setting -> appearance -> appearance -> theme
+	2. 폰트 :
+		확대/축소 : 상단메뉴 -> file -> setting -> editor -> general -> mouse control
+			- change font size with ctrl+mouse wheel in
+		폰트 : 상단메뉴 -> file -> setting -> editor -> font
+	3. 그외 플러그인
+		상단메뉴 -> file -> setting -> plugins
+			1. korean language pack  한글팩
+
+
+인텔리제이 JAVA 프로젝트 폴더구성
+	프로젝트명
+		IDEA폴더 : 인텔리제이가 사용하는 설정파일 ( 관리X )
+		* src폴더 : 소스폴더
+		.gitignore : git 사용할 commit 무시할 파일들
+		tj_2024A_backend.iml : 인텔리제이 프로젝트 설정파일 ( 관리X)
+		외부라이브러리 ( JDK17 )
+
+	[ 패키지/폴더 만들기 ]
+	1. src 오른쪽 클릭
+	2. 새로 만들기
+	3. 패키지/ 폴더
+		day01  ( 임의 )
+
+	[ 클래스 만들기 ]
+	1. 패키지 오른쪽 클릭
+	2. 새로 만들기
+	3. java 클래스
+		Step1 ( 임의 ) 첫글자는 대문자 , 숫자시작 x
