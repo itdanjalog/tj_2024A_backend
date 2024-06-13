@@ -1,4 +1,4 @@
-package day06.Step2;
+package day06.step2;
 
 public class Person {
     // 멤버변수/필드

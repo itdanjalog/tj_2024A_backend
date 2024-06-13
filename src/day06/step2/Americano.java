@@ -1,4 +1,4 @@
-package day06.Step2;
+package day06.step2;
 
 //형경
 public class Americano {
