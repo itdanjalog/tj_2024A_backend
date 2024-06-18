@@ -1,8 +1,8 @@
-package day09.step3;
+package day09;
 
 import java.util.Scanner;
 
-public class 제품CRUD_변수버전 {
+public class 제품CRUD_샘플 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner( System.in );
