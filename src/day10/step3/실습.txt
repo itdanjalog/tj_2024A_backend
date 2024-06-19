@@ -1,0 +1,31 @@
+Step3
+    - p.226 ~ p.229 따라서 입력해서 구현하기
+
+[샘플코드]
+public class StudentTest {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (true){
+            System.out.println("1.학생등록 2.점수등록 3.점수확인 선택] ");
+            int ch = scanner.nextInt();
+            if( ch == 1 ){}
+            if( ch == 2 ){}
+            if( ch == 3 ){}
+            if( ch == 4 ){}
+        }
+    }
+}
+
+p.226 ~ p.229 예제를 아래와 같이 조건을 구현하시오.
+[ 학생등록 ]
+    1. 학번 과 이름을 입력받아 학생객체 생성후 학생목록 리스트 에 저장하기
+    * 학생목록 리스트를 만들어주세요.
+[ 점수등록 ]
+    1. 학번을 입력받아 동일한 학번이 있을경우
+    2. 과목명과 점수를 입력받아 해당 학번 학생의 점수리스트에 점수 추가하기
+[ 점수확인 ]
+    1. 학번을 입력받아 동일한 학번이 있을경우
+    2. 해당 학번의 학생의 모든 점수리스트를 출력해주세요.
+
+
+
