@@ -17,14 +17,18 @@
 	-----------------------------------------------------------
     DDL( data Definition Language ) 데이터 정의어 
 		1. create
-			- create database '새로운DB명';				: 데이터베이스 생성 
+			- create database 새로운DB명;					: 데이터베이스 생성 
+            - create table 새로운T명();					: 테이블 생성 
         2. drop 
 			- drop database 삭제할DB명;					: 데이터베이스 삭제 
-				- drop database if exists 삭제할DB명
+				- drop database if exists 삭제할DB명;
+			- drop table 삭제할T명;
+				- drop table if exists 삭제할T명;
         - 그외 
         show 
 			show databases								: DBSERVER 내 데이터베이스 목록 확인 
 			show variables like 'datadir'				: DBSERVER 내 데이터베이스 local 위치 확인 
+            show tables
 		use 
 			use 사용할데이터베이스명							: DBSERVER 내 조작/사용 할 데이터베이스 선택 
             

@@ -1,0 +1,85 @@
+[ Console Kiosk ]
+    [1.클래스 설계 및 구현 ]
+        1. 데이터베이스 설계 기반으로 각 클래스 설계 하여 구현하시오.
+        2. 배열 대신 ArrayList 클래스를 활용하시오.
+        3. 장바구니(Cart)는 데이터베이스 테이블은 없고 자바에만 존재합니다.
+    [2.기능 구현 ]
+        0. 무한반복문에서 해당 하는 메뉴의 번호를 받아 아래와 같이 조건에 따라 기능을 수행하시오.
+            -  단) 모든 식별 코드(카테고리번호,제품번호,주문번호,주문상세번호)는 자동으로 생성되고 각 정보들 과 같이 저장 됩니다.
+        1. Category Add     : 카테고리명을 입력받아 카테고리목록에 등록하시오.
+        2. Category List    : 카테고리목록에서 모든 카테고리의 카테고리코드 와 카테고리명을 출력하시오.
+        3. Product Add      : 카테고리번호 , 제품명 , 제품가격 을 입력받아 제품목록에 등록하시오. ( 단,없는 카테고리번호 입력받으면 등록 불가능 )
+        4. Product List     : 카테고리별 구분하여 제품목록에서 모든 제품의 제품번호 , 제품명 , 제품가격을 출력하시오.
+        5. Cart Add         : 제품번호 와 주문수량을 입력받아 카트목록에 등록하시오. ( 단,없는 제품번호 입력받으면 등록 불가능 )
+        6. Cart List        : 카트목록에 등록된 제품번호 와 주문수량을 모두 출력합니다.
+        7. Order Add        : 주문날짜를 입력받아 카트목록에 등록된 모든 제품번호와 주문수량을 활용하여 주문 목록 과 주문 상세 목록에 등록후 카트목록은 비우기/초기화합니다.
+        8. Order List       : 주문목록별 구분하여 주문상세의 제품명 , 수량을 모두출력하시오.
+    [3.샘플]
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        // 메모리설계 및 샘플
+        while(true){
+            System.out.println(" ===== ADMIN MENU ===== ");
+            System.out.println("1.Category Add");   System.out.println("2.Category List");
+            System.out.println("3.Product Add");    System.out.println("4.Product List");
+            System.out.println("5.Cart Add");      System.out.println("6.Cart List");
+            System.out.println("7.Order Add");      System.out.println("8.Order List");
+            System.out.print("Menu choose : ");     int ch = scan.nextInt();
+        } // w end
+    } // class end
+
+
+
+    =======================
+    [ DB 메모리 설계 ]
+    	create table categoryTable(categoryCode int, categoryName varchar(10));
+    	create table productTable(productCode int, productName varchar(20), productPrice int, categoryCode int);
+    	create table orderTable(orderCode int, orderTime datetime);
+    	create table orderDetailTable(orderDetailCode int, productCode int, orderAmount tinyint, orderCode int);
+    =====================================================================
+    [ 자바 메모리 설계 ]
+    	1.  데이터베이스에서 설계한 테이블 기반으로 자바의 클래스 를 선언/구현
+    		- 모든 클래스내 멤버변수는 private 으로 선언합니다.
+    	2.  day11 -> step1 클래스에
+    		- 각 선언한 클래스를 이용하여 샘플코드 기반으로 각 객체 생성 ( 각 클래스별 객체 3개이상 생성 )
+    		- 동일한 타입의 객체들을 각 ArrayList 선언해서 저장 하고 출력
+
+
+            // 기능 구현
+        [2.기능 구현 ]
+            0. 무한반복문에서 해당 하는 메뉴의 번호를 받아 아래와 같이 조건에 따라 기능을 수행하시오.
+                -  단) 모든 식별 코드(카테고리번호,제품번호,주문번호,주문상세번호)는 자동으로 생성되고 각 정보들 과 같이 저장 됩니다.
+            1. Category Add     : 카테고리명을 입력받아 카테고리목록에 등록하시오.
+            2. Category List    : 카테고리목록에서 모든 카테고리의 카테고리코드 와 카테고리명을 출력하시오.
+            3. Product Add      : 카테고리번호 , 제품명 , 제품가격 을 입력받아 제품목록에 등록하시오. ( 단,없는 카테고리번호 입력받으면 등록 불가능 )
+            4. Product List     : 카테고리별 구분하여 제품목록에서 모든 제품의 제품번호 , 제품명 , 제품가격을 출력하시오.
+            5. Cart Add         : 제품번호 와 주문수량을 입력받아 카트목록에 등록하시오. ( 단,없는 제품번호 입력받으면 등록 불가능 )
+    	- 추가적인 Cart 정보를 담을 클래스와 리스트가 필요로 합니다.
+            6. Cart List        : 카트목록에 등록된 제품번호 와 주문수량을 모두 출력합니다.
+            7. Order Add        : 주문날짜를 입력받아 카트목록에 등록된 모든 제품번호와 주문수량을 활용하여 주문 목록 과 주문 상세 목록에 등록하시오.
+    	- 등록후 카트목록은 비우기/초기화합니다.
+            8. Order List       : 주문목록별 구분하여 주문상세의 제품명 , 수량을 모두출력하시오.
+        [3.샘플]
+        public static void main(String[] args) {
+            Scanner scan = new Scanner(System.in);
+            // 메모리설계 및 샘플
+            while(true){
+                System.out.println(" ===== ADMIN MENU ===== ");
+                System.out.println("1.Category Add");   System.out.println("2.Category List");
+                System.out.println("3.Product Add");    System.out.println("4.Product List");
+                System.out.println("5.Cart Add");      System.out.println("6.Cart List");
+                System.out.println("7.Order Add");      System.out.println("8.Order List");
+                System.out.print("Menu choose : ");     int ch = scan.nextInt();
+            } // w end
+        } // class end
+
+
+
+
+
+
+
+
+
+
+
