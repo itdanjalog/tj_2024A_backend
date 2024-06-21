@@ -88,6 +88,38 @@ select * from t6;
 
 # 예시 
 
+# 1. 회원 
+drop table m;
+create table m( 
+	mno_pk int auto_increment , mname varchar(10) , mphone char(13) ,
+    primary key( mno_pk ) -- 해당 필드을 pk로 설정 
+);
+# 2. 게시물
+drop table b; 
+create table b( 
+	bno_pk int auto_increment  , btitle varchar(100) , bcontent longtext , 
+	bdate datetime default now() , 
+    primary key ( bno_pk ) , -- 해당 필드을 pk로 설정 
+    mno_fk int , foreign key( mno_fk ) references m(mno_pk) -- 해당 필드을 fk로 설정 
+);
+# 3. 게시물 댓글 
+drop table r;
+create table r(	
+	rno_pk int auto_increment  , rcontent text , rpwd varchar(20) , 
+    primary key( rno_pk ),	-- 해당 필드을 pk로 설정 
+    bno_fk int , foreign key( bno_fk ) references b(bno_pk),	-- 해당 필드을 fk로 설정 
+	mno_fk int , foreign key( mno_fk ) references m(mno_pk)		-- 해당 필드을 fk로 설정 
+); 
+
+
+
+# 관계 확인 : 워크벤치 상단메뉴 -> Database -> Eeverse Engineer -> 다음 -> 비밀번호 입력 -> DB선택 -> 다음 
+
+
+
+
+
+
 
 
 

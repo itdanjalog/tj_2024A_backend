@@ -73,6 +73,12 @@
             } // w end
         } // class end
 
+- Category Add , Category List 구현 코드에서 사용되는 지역변수,static변수,멤버변수,객체 들이 저장되는 구역 찾기
+- 위 함수에서 사용되는 코드들의 JVM 들의 구분지어 PPT/캔바 로 표현
+- ArrayList 포함
+
+-- 시간이 된다면 Product Add  , Product List
+
 
 
 
