@@ -39,6 +39,10 @@ public class View {
     public void printView(){
         System.out.println(" >> 출력페이지 << ");
         ArrayList<String> result = Controller.controller.printC();
+        System.out.println("===== 이름 명단 ===== ");
+        for( int i = 0 ; i < result.size() ; i++ ){
+            System.out.println( result.get(i) );
+        }
     }
     // 4. 수정페이지 함수
     public void updateView(){
