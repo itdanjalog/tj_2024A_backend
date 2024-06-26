@@ -14,8 +14,10 @@ public class Dao {
     // 2. 생성자
     Dao(){ // 연동코드
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection( "jdbc:mysql://localhost:3306/day05", "root","1234" );
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/day05",
+                    "root","1234" );
         }catch (Exception e ){ System.out.println("연동실패"+e);  }
     }
     //--- 각 기능별 함수 구현
