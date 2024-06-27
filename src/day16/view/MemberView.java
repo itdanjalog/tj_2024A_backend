@@ -44,11 +44,41 @@ public class MemberView {
     }// m end
 
     // 2. 로그인 화면 함수
-    public void login(){ } // m end
+    public void login(){
+        System.out.print("아이디 : ");
+        String mid = scan.next();
+        System.out.print("비밀번호 : ");
+        String mpwd = scan.next();
+        MemberDto memberDto = new MemberDto();
+        memberDto.setMid( mid ); memberDto.setMpwd( mpwd );
+        boolean result = MemberController.mcontrol.login( memberDto );
+        if( result ){ System.out.println("로그인성공 ");}
+        else{ System.out.println("로그인실패");}
+    } // m end
     // 3. 아이디찾기 화면 함수
-    public void findId(){ } // m end
+    public void findId(){
+        System.out.print("이름 : ");
+        String mname = scan.next();
+        System.out.print("연락처 : ");
+        String mphone = scan.next();
+        MemberDto memberDto = new MemberDto();
+        memberDto.setMname( mname ); memberDto.setMphone( mphone );
+        String result =  MemberController.mcontrol.findId( memberDto );
+        if( result != null ){  System.out.println("회원아이디 : "+result);}
+        else{  System.out.println("동일한 회원정보가 없습니다."); }
+    } // m end
     // 4. 비밀번호찾기 화면 함수
-    public void findPwd(){ } // m end
+    public void findPwd(){
+        System.out.print("아이디 : ");
+        String mid = scan.next();
+        System.out.print("연락처 : ");
+        String mphone = scan.next();
+        MemberDto memberDto = new MemberDto();
+        memberDto.setMid( mid ); memberDto.setMphone( mphone );
+        String result = MemberController.mcontrol.findPwd( memberDto );
+        if( result != null ){ System.out.println("회원비밀번호 : " + result );}
+        else{  System.out.println("동일한 회원정보가 없습니다."); }
+    } // m end
 } // c end
 
 

@@ -43,10 +43,66 @@ public class MemberDao {
     }// m end
 
     // 2. 로그인 화면 함수
-    public void login(){ } // m end
-    // 3. 아이디찾기 화면 함수
-    public void findId(){   } // m end
-    // 4. 비밀번호찾기 화면 함수
-    public void findPwd(){ } // m end
+    public boolean login(MemberDto memberDto ){
+        try {
+            String sql = "SELECT * FROM member" +
+                    " where mid = ? and mpwd = ?";// 1. SQL 작성한다.
+            ps = conn.prepareStatement(sql); // 2. DB연동객체에 SQL를 기재
+            ps.setString(1, memberDto.getMid() );    // 3. SQL의 ? 매개변수에 변수값 대입
+            ps.setString(2, memberDto.getMpwd());
+            // 4. 실행
+            rs = ps.executeQuery();  // 5. 쿼리 실행후 결과를 rs로 받는다.
+            // 6. 다음 레코드 : 로그인성고시 레코드1개 , 로그인실패시 레코드 0개
+            if (rs.next()) {   return true;  } // 다음 레코드가 1개라도 존재하면 로그인 성공
+        }catch (Exception e ){  System.out.println(e); }
+        return false; // 로그인 실패
+    } // m end
 
+    // 3. 아이디찾기  함수
+    public String findId( MemberDto memberDto ){
+        try{
+            String sql = "SELECT * FROM member where mname = ? and mphone = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString( 1 , memberDto.getMname() );
+            ps.setString( 2 , memberDto.getMphone() );
+            rs = ps.executeQuery();
+            if( rs.next() ){
+                String findId = rs.getString("mid"); // rs.getString("필드명") : 현재 레코드의 해당 필드명에 필드값 반환
+                return  findId;
+            }
+        }catch (Exception e ){System.out.println(e); }
+        return null;
+    } // m end
+
+    // 4. 비밀번호찾기  함수
+    public String findPwd( MemberDto memberDto ){
+        try{
+            String sql = "SELECT * FROM member where mid = ? and mphone = ?;";
+            ps = conn.prepareStatement( sql );
+            ps.setString( 1 , memberDto.getMid() );
+            ps.setString( 2 , memberDto.getMphone());
+            rs = ps.executeQuery();
+            if( rs.next() ){
+                String findpwd = rs.getString("mpwd");
+                return findpwd;
+            }
+        }catch (Exception e ){System.out.println(e); }
+        return null;
+    } // m end
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
