@@ -1,5 +1,7 @@
 package day16.model.dao;
 
+import day16.model.dto.MemberDto;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,15 +24,17 @@ public class MemberDao {
     }
 
     // 1. 회원가입 화면 함수
-    public boolean signup( String mid , String mpwd , String mname , String mphone ){
+    public boolean signup( MemberDto memberDto ){
         try {
             // 1. SQL 작성한다.
             String sql = "INSERT INTO member( mid , mpwd , mname , mphone ) VALUES( ? , ? , ? , ? )";
             // 2. SQL 기재한다
             ps = conn.prepareStatement(sql);
             // 2. SQL 문법의 ?(와일드카드) 매개변수 기재한다
-            ps.setString(1, mid);        // .setString( ?순서번호 , 값또는변수명 )
-            ps.setString(2, mpwd);  ps.setString(3, mname); ps.setString(4, mphone);
+            ps.setString(1, memberDto.getMid() );        // .setString( ?순서번호 , 값또는변수명 )
+            ps.setString(2, memberDto.getMpwd() );
+            ps.setString(3, memberDto.getMname() );
+            ps.setString(4, memberDto.getMphone());
             // 3. SQL 실행한다. // 4. SQL 실행결과
             int count = ps.executeUpdate(); // executeUpdate() 등록된 레코드수 반환 ,
             if (count == 1) {  return true;   } //  1개 레코드 등록되면 성공

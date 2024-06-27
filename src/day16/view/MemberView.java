@@ -1,6 +1,7 @@
 package day16.view;
 
 import day16.controller.MemberController;
+import day16.model.dto.MemberDto;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -29,12 +30,15 @@ public class MemberView {
     } // m end
     // 1. 회원가입 화면 함수
     public void signup(){
+        // 1. 입력
         System.out.print("아이디:");   String mid = scan.next();
         System.out.print("비밀번호:");  String mpwd = scan.next();
         System.out.print("이름:");    String mname = scan.next();
         System.out.print("연락처:");   String mphone = scan.next();
-        boolean result
-                =  MemberController.mcontrol.signup( mid , mpwd , mname , mphone );
+        // 3. 객체화
+        MemberDto memberDto = new MemberDto( mid , mpwd , mname , mphone );
+        // 4. Controller에게 전달
+        boolean result =  MemberController.mcontrol.signup( memberDto );
         if( result ){  System.out.println(">>회원가입 성공 "); }
         else{  System.out.println(">>회원가입 실패");  }
     }// m end
