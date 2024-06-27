@@ -23,7 +23,27 @@
             회원번호PK -- 댓글작성자(회원번호FK)
             글번호PK -- 댓글위치(글번호FK)
 
-    - SQL 작성 , 샘플
+        - SQL 작성 , 샘플
+
+
+    2. 자바 프로젝트 패키지 구조 설계 , 분류 : 1.MVC기반 2.기능별
+    view 패키지            : view 클래스들을 보관하는 패키지           , 역할 : 입출력
+        MemberView 클래스
+        BoardView 클래스
+    controller 패키지      : controller 클래스들을 보관하는 패키지     , 역할 : 데이터전달,데이터유효성검사,데이터형변환
+        MemberController 클래스
+        BoardController 클래스
+    model 패키지           : dto , dao 클래스들을 보관하는 패키지      , 역할 : 데이터 관리
+        dto 패키지                                                 DTO : 데이터 이동 객체
+            MemberDto 클래스
+            BoardDto 클래스
+            ReplyDto 클래스
+        dao 패키지                                                 DAO : 데이터 접근 객체 , DB연동객체
+            MemberDao 클래스
+            BoardDao(=ReplyDao) 클래스
+    AppStart 클래스        : 해당 프로그램을 시작하는 클래스
+
+
 
 
 
