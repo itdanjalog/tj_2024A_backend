@@ -63,6 +63,26 @@ INSERT INTO reply( rcontent , mno , bno ) VALUES( '댓글내용3' , 2 , 3 );	# 3
 INSERT INTO reply( rcontent , mno , bno ) VALUES( '댓글내용4' , 1 , 4 );	# 4번 게시물의 유재석 이 쓴 댓글 
 INSERT INTO reply( rcontent , mno , bno ) VALUES( '댓글내용5' , 3 , 1 );	# 1번 게시물의 신동엽 이 쓴 댓글 
 
+# 검색
+# 1. 전체 검색 
+SELECT * FROM member;
+# 2. 조건 검색 
+SELECT * FROM member where mno = 1; -- mno가 '1'인 회원 레코드 검색 
+SELECT * FROM member where mid = 'qwe1'; -- mid가 'qwe1'인 회원 레코드 검색
+SELECT * FROM member where mphone = '010-0000-0000'; -- mphone가 '010-0000-0000'인 회원레코드 검색 
+# 아이디찾기 / 비교 ( 회원명과 연락처가 동일한 회원 검색 )
+# 비교연산자 : >초과 <미만 >=이상 <=이하 =같다 !=같지않다.	# 관계연산자 : and or not		vs   java : &&  ||  !
+SELECT * FROM member where mname = '유재석' and mphone = '010-0000-0000';  #  mysql :  a = 1 and b = 2   vs  java : a == 1 && b == 2 
+	# JDBC의 DAO SQL 작성시 : SELECT * FROM member where mname = ? and mphone = ?;
+# 비밀번호찾기 / 비교 ( 아이디와 연락처가 동일한 회원 검색 )
+SELECT * FROM member where mid = 'qwe1' and mphone = '010-0000-0000';
+	# JDBC의 DAO SQL 작성시 : SELECT * FROM member where mid = ? and mphone = ?;
+# 로그인 / 비교 ( 아이디와 비밀번호가 동일한 회원 검색 )
+SELECT * FROM member where mid = 'qwe1' and mpwd = '1234'; 
+	# JDBC의 DAO SQL 작성시 : SELECT * FROM member where mid = ? and mpwd = ?;
+    
+
+
 
 
 
