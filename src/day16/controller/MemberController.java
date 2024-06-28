@@ -17,13 +17,9 @@ public class MemberController {
     // - 글쓰기,댓글쓰기 할때 현재 로그인된 회원을 식별하기 위해서
     // - 초기값:0 비로그인상태 , 1~ : 로그인된회원번호(로그인된상태)
     public int loginMno = 0;
-
     // 2-2 : 로그아웃 함수
-    public void logout(){
-        loginMno = 0;
-    }
-
-    // 2. 로그인 함수`
+    public void logout(){ loginMno = 0;  }
+    // 2. 로그인 함수
     public boolean login( MemberDto memberDto ){
         loginMno = MemberDao.mdao.login( memberDto );
         return loginMno == 0 ? false : true;
@@ -40,6 +36,16 @@ public class MemberController {
         return MemberDao.mdao.findPwd( memberDto );
     } // m end
 
+    // 5. 회원탈퇴 함수
+    public boolean mDelete( String confirmPwd ){
+        return MemberDao.mdao.mDelete( confirmPwd , loginMno ); // view로 부터 받은 확인비밀번호와 로그인된회원번호를 Dao 전달
+    }
+    // 2. 회원수정 함수
+    public boolean mUpdate( MemberDto memberDto ){
+        // + memberDto에 로그인된 회원번호
+        memberDto.setMno( loginMno );
+        return MemberDao.mdao.mUpdate( memberDto );
+    }
 }
 /*
 

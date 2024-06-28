@@ -90,6 +90,27 @@ public class MemberDao {
         }catch (Exception e ){System.out.println(e); }
         return null;
     } // m end
+    // 5. 회원탈퇴 함수
+    public boolean mDelete( String confirmPwd , int loginMno ){
+        try{ String sql = "delete from member where mno = ? and mpwd = ?";
+            ps = conn.prepareStatement(sql);    ps.setInt( 1  , loginMno );     ps.setString( 2 , confirmPwd );
+            int count = ps.executeUpdate();     if( count == 1 ){ return true; }
+        }catch (Exception e ){ System.out.println(e); } return false;
+    }
+    // 2. 회원수정 함수
+    public boolean mUpdate( MemberDto memberDto ){
+        try{ String sql = "update member " +
+                " set mname = ? , mphone = ? " +
+                " where mno = ?";
+        ps = conn.prepareStatement(sql);
+        ps.setString( 1 , memberDto.getMname() );
+        ps.setString( 2 , memberDto.getMphone() );
+        ps.setInt( 3 , memberDto.getMno() );
+        int count = ps.executeUpdate();
+        if( count == 1 ){ return true;}
+        }catch( Exception e){System.out.println( e );}
+        return false;
+    }
 }
 
 
