@@ -52,9 +52,13 @@ public class MemberView {
         MemberDto memberDto = new MemberDto();
         memberDto.setMid( mid ); memberDto.setMpwd( mpwd );
         boolean result = MemberController.mcontrol.login( memberDto );
-        if( result ){ System.out.println("로그인성공 ");}
+        if( result ){
+            System.out.println("로그인성공 ");
+            BoardView.bView.index2();// 로그인 성공시 로그인된 메뉴로 이동
+        }
         else{ System.out.println("로그인실패");}
     } // m end
+
     // 3. 아이디찾기 화면 함수
     public void findId(){
         System.out.print("이름 : ");

@@ -5,18 +5,32 @@ import day16.model.dto.MemberDto;
 
 public class MemberController {
     // 0.
-    public static MemberController mcontrol
-            = new MemberController();
+    public static MemberController mcontrol = new MemberController();
 
     // 1. 회원가입 화면 함수 , 매개변수 : MemberDto(mid , mpwd , mname , mphone)  / 리턴값 : boolean
     public boolean signup(MemberDto memberDto ){
         boolean result  = MemberDao.mdao.signup( memberDto );
         return result;
     }// m end
-    // 2. 로그인 화면 함수
+
+    // 2-1. 로그인 성공한 회원의 번호 저장하는 멤버변수
+    // - 글쓰기,댓글쓰기 할때 현재 로그인된 회원을 식별하기 위해서
+    // - 초기값:0 비로그인상태 , 1~ : 로그인된회원번호(로그인된상태)
+    public int loginMno = 0;
+
+    // 2-2 : 로그아웃 함수
+    public void logout(){
+        loginMno = 0;
+    }
+
+    // 2. 로그인 함수`
     public boolean login( MemberDto memberDto ){
-        return MemberDao.mdao.login( memberDto );
+        loginMno = MemberDao.mdao.login( memberDto );
+        return loginMno == 0 ? false : true;
     } // m end
+
+
+
     // 3. 아이디찾기 화면 함수
     public String findId( MemberDto memberDto ){
         return MemberDao.mdao.findId( memberDto );
