@@ -55,13 +55,20 @@ public class BoardView {
     // 4. 게시판(게시물전체출력) 함수
     public void bPrint( ) {
         ArrayList<BoardDto> result =  BoardController.getInstance().bPrint( );   // 컨트롤에게 전체 게시물 조회 요청
-        System.out.println("result = " + result);
+        System.out.println("번호\t조회수\t작성일\t\t\t제목");
+        // 리스트객체명.forEach( 반복변수 -> { 실행문; } ); // 리스트내 전체 dto 를 하나씩 반복변수에 대입 반복
+        result.forEach( dto -> {
+            System.out.printf("%2d\t%2d\t%10s\t%s \n" ,
+                    dto.getBno() , dto.getBview() , dto.getBdate() , dto.getBtitle() );
+        } );
+        System.out.print(" 0.글쓰기 1~:개별글조회: "); int ch = scan.nextInt();
+        if( ch == 0 ){ bWrite(); }
+        else if ( ch >= 1 ){ bView(); }
     }
-
     // 5. 게시물 쓰기 함수
-
+    public void bWrite() { }
     // 6. 게시물 개별조회 함수
-
+    public void bView(){ }
     // 7. 게시물 삭제 함수
 
     // 8. 게시물 수정 함수

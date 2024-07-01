@@ -42,7 +42,9 @@ public class BoardDao {
 
                 BoardDto boardDto = new BoardDto(btitle,bcontent,bdate,bview,mno,bno);  // Dto 1개 만들기
                 list.add( boardDto ); // 리스트에 dto 담기
+                // return list; // -- 여러개 담긴 Dto 의 리스트를 반환
             }
+            return list; // -- 여러개 담긴 Dto 의 리스트를 반환
         }catch (Exception e ){  System.out.println(e);}
         return list; // -- 여러개 담긴 Dto 의 리스트를 반환
     }

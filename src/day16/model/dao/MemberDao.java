@@ -69,7 +69,7 @@ public class MemberDao {
             rs = ps.executeQuery();
             if( rs.next() ){
                 String findId = rs.getString("mid"); // rs.getString("필드명") : 현재 레코드의 해당 필드명에 필드값 반환
-                return  findId;
+                return findId;
             }
         }catch (Exception e ){System.out.println(e); }
         return null;
