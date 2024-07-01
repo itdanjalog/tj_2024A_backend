@@ -28,6 +28,7 @@ public class BoardController {
         // - boardDto(제목,내용,작성자번호)을 다오 에게 전달후 결과 받기.
         return BoardDao.getInstance().bWrite( boardDto );
     }
+
     // 6. 게시물 개별조회 함수
     public BoardDto bView( int bno ){
         return BoardDao.getInstance().bView( bno );
