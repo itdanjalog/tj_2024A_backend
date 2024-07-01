@@ -22,6 +22,12 @@ public class BoardController {
         return BoardDao.getInstance().bPrint();   // dao 에게 전체 게시물 조회 요청 후 결과를 반환
     }
 
+    // 6. 게시물 개별조회 함수
+    public BoardDto bView( int bno ){
+        return BoardDao.getInstance().bView( bno );
+    }
+
+
 }
 
 

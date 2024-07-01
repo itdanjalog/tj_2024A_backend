@@ -38,9 +38,10 @@ public class BoardDao {
                 String bcontent = rs.getString("bcontent");
                 String bdate = rs.getString("bdate");
                 int bview = rs.getInt("bview");
-                int mno = rs.getInt("mno"); int bno = rs.getInt("bno");
-
+                int mno = rs.getInt("mno");
+                int bno = rs.getInt("bno");
                 BoardDto boardDto = new BoardDto(btitle,bcontent,bdate,bview,mno,bno);  // Dto 1개 만들기
+
                 list.add( boardDto ); // 리스트에 dto 담기
                 // return list; // -- 여러개 담긴 Dto 의 리스트를 반환
             }
@@ -48,4 +49,34 @@ public class BoardDao {
         }catch (Exception e ){  System.out.println(e);}
         return list; // -- 여러개 담긴 Dto 의 리스트를 반환
     }
+
+    // 6. 게시물 개별조회 함수
+    public BoardDto bView( int bno ){
+        try{ // 0.예외처리
+            String sql = "select * from board where bno = ? ";// 1. SQL 작성
+            ps = conn.prepareStatement(sql); // 2. SQL 기재
+            ps.setInt( 1 , bno );// 3. 기재된 SQL ? 매개변수 대입
+            rs = ps.executeQuery(); // 4. SQL 실행 후 결과 반환
+            if( rs.next() ) { // 5. 결과에 따른 처리
+                // - 현재 레코드들의 필드값 각 호출 해서 생성자에 매개변수로 대입
+                BoardDto boardDto = new BoardDto(
+                        rs.getString("btitle"), rs.getString("bcontent"),
+                        rs.getString("bdate"),rs.getInt("bview"),
+                        rs.getInt("mno"),rs.getInt("bno"));
+                return boardDto; // - 생성된 boardDto 반환
+            }
+        }catch (Exception e ){ System.out.println(e); }
+        return null; // - 오류 또는 게시물이 존재하지 않을때 null 반환
+    }
 }
+
+
+
+
+
+
+
+
+
+
+

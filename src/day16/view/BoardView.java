@@ -61,14 +61,29 @@ public class BoardView {
             System.out.printf("%2d\t%2d\t%10s\t%s \n" ,
                     dto.getBno() , dto.getBview() , dto.getBdate() , dto.getBtitle() );
         } );
-        System.out.print(" 0.글쓰기 1~:개별글조회: "); int ch = scan.nextInt();
+        System.out.print(" 0.글쓰기 1~:개별글(번호)조회: ");
+        int ch = scan.nextInt();
         if( ch == 0 ){ bWrite(); }
-        else if ( ch >= 1 ){ bView(); }
+        else if ( ch >= 1 ){ bView( ch ); }
     }
     // 5. 게시물 쓰기 함수
     public void bWrite() { }
+
     // 6. 게시물 개별조회 함수
-    public void bView(){ }
+    public void bView( int bno ){
+        // - 매개변수로 선택 받은 게시물을 번호를 컨트롤에게 전달 후 해당 게시물 정보 받기
+        BoardDto result = BoardController.getInstance().bView( bno );
+        if( result == null ){
+            System.out.println(">>존재하지 않는 게시물 입니다.");
+            return;
+        }
+        System.out.println("제목 : " + result.getBtitle() );
+        System.out.print("작성자 : " + result.getMno() );
+        System.out.println("\t조회수 : " + result.getBview() );
+        System.out.println("작성일 : " + result.getBdate() );
+        System.out.println("내용 : " + result.getBcontent() );
+    }
+
     // 7. 게시물 삭제 함수
 
     // 8. 게시물 수정 함수
