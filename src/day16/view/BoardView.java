@@ -67,7 +67,17 @@ public class BoardView {
         else if ( ch >= 1 ){ bView( ch ); }
     }
     // 5. 게시물 쓰기 함수
-    public void bWrite() { }
+    public void bWrite() {
+        scan.nextLine(); // 1. 입력받기
+        System.out.print("제목 : ");String btitle = scan.nextLine();
+        System.out.print("내용 : ");String bcontent = scan.nextLine();
+        BoardDto boardDto = new BoardDto(); // 2. 입력받은 값들을 객체의 각각 매개변수에 값 대입
+        boardDto.setBtitle( btitle ); boardDto.setBcontent( bcontent );
+        // 3. 입력받은 객체를 컨트롤에게 전달후 결과 응답 받기.
+        boolean result =  BoardController.getInstance().bWrite( boardDto );
+        if( result ){  System.out.println(">> 글작성 성공");
+        }else{  System.out.println(">> 글작성 실패");   }
+    }
 
     // 6. 게시물 개별조회 함수
     public void bView( int bno ){

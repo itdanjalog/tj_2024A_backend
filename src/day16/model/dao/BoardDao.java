@@ -1,5 +1,6 @@
 package day16.model.dao;
 
+import day16.controller.MemberController;
 import day16.model.dto.BoardDto;
 
 import java.sql.Connection;
@@ -68,6 +69,21 @@ public class BoardDao {
         }catch (Exception e ){ System.out.println(e); }
         return null; // - 오류 또는 게시물이 존재하지 않을때 null 반환
     }
+    // 5. 게시물 쓰기 함수
+    public boolean bWrite( BoardDto boardDto ) {
+        try{ // 0. 예외처리
+            String sql = "insert into board(btitle,bcontent,mno) values( ? , ? , ? ) ";// 1. SQL 작성
+            ps = conn.prepareStatement(sql); // 2. sql 기재
+            ps.setString( 1 , boardDto.getBtitle() ); // 3. 기재된 sql의 매개변수 값 대입
+            ps.setString( 2 , boardDto.getBcontent() );
+            ps.setInt( 3 , boardDto.getMno() );
+            int count = ps.executeUpdate(); // 4. sql 실행후 결과받기
+            if( count == 1 ) { // 5. 결과에 따른 처리 // insert 결과 레코드가 1개 이면
+                return true;
+            }
+        }catch (Exception e ){  System.out.println(e);   } return false;
+    }
+
 }
 
 

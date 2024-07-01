@@ -21,7 +21,13 @@ public class BoardController {
     public ArrayList<BoardDto> bPrint( ) {
         return BoardDao.getInstance().bPrint();   // dao 에게 전체 게시물 조회 요청 후 결과를 반환
     }
-
+    // 5. 게시물 쓰기 함수
+    public boolean bWrite( BoardDto boardDto ) {
+        // - 매개변수로 전달받은 boardDto에 현재 로그인된 회원번호를 대입
+        boardDto.setMno( MemberController.mcontrol.loginMno );
+        // - boardDto(제목,내용,작성자번호)을 다오 에게 전달후 결과 받기.
+        return BoardDao.getInstance().bWrite( boardDto );
+    }
     // 6. 게시물 개별조회 함수
     public BoardDto bView( int bno ){
         return BoardDao.getInstance().bView( bno );

@@ -96,6 +96,12 @@ update member set mname = '유재석' where mno = 0;
 update member set mname = '유재석' , mphone = '010-9999-9999' where mno = 0;
 # JDBC SQL : update member set mname = ? , mphone = ? where mno = ?;
 
+# 조회 
+# 1. 전체 조회
+select * from board;
+# 2. 개별 조회 ( 조건 )
+select * from board where bno = 3;	# 3번 게시물 개별 조회
+ 
 
 
 
