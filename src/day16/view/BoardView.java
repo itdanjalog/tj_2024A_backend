@@ -84,19 +84,26 @@ public class BoardView {
         // - 매개변수로 선택 받은 게시물을 번호를 컨트롤에게 전달 후 해당 게시물 정보 받기
         BoardDto result = BoardController.getInstance().bView( bno );
         if( result == null ){
-            System.out.println(">>존재하지 않는 게시물 입니다.");
-            return;
+            System.out.println(">>존재하지 않는 게시물 입니다.");  return;
         }
         System.out.println("제목 : " + result.getBtitle() );
         System.out.print("작성자 : " + result.getMno() );
         System.out.println("\t조회수 : " + result.getBview() );
         System.out.println("작성일 : " + result.getBdate() );
         System.out.println("내용 : " + result.getBcontent() );
+        System.out.print(">> 1.삭제 2.수정 : ");
+        int ch = scan.nextInt();
+        if( ch == 1 ){ bDelete( bno ); }
+        else if( ch == 2 ){ bUpdate();  }
     }
-
     // 7. 게시물 삭제 함수
-
+    public void bDelete( int bno ) {
+        boolean result = BoardController.getInstance().bDelete(bno);
+        if (result) {  System.out.println(">> 삭제 성공");}
+        else {  System.out.println(">>삭제 실패");}
+    }
     // 8. 게시물 수정 함수
+    public void bUpdate(){ }
 
 } // class end
 

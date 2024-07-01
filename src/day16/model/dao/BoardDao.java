@@ -84,6 +84,23 @@ public class BoardDao {
             }
         }catch (Exception e ){  System.out.println(e);   } return false;
     }
+    // 7. 게시물 삭제 함수
+    public boolean bDelete( int bno , int mno  ){
+        try{ //0.예외처리
+            String sql ="delete from board where bno = ? and mno = ? "; // 1. SQL 작성
+            ps = conn.prepareStatement(sql); // 2. sql 기재
+            ps.setInt( 1 , bno );// 3. 기재된 sql의 ? 매개변수 값 대입
+            ps.setInt( 2 , mno );
+            int count = ps.executeUpdate(); // 4. sql 실행 후 결과 받기
+            if( count == 1 ) return true; // 5. 결과에 따른 반환처리
+        }catch (Exception e ){ System.out.println(e);}
+        return false;
+    }
+
+    // 8. 게시물 수정 함수
+    public void bUpdate(){
+
+    }
 
 }
 

@@ -34,6 +34,14 @@ public class BoardController {
         return BoardDao.getInstance().bView( bno );
     }
 
+    // 7. 게시물 삭제 함수
+    public boolean bDelete( int bno ){
+        int mno = MemberController.mcontrol.loginMno;
+        return BoardDao.getInstance().bDelete( bno , mno );
+    }
+    // 8. 게시물 수정 함수
+    public void bUpdate(){ }
+
 
 }
 
