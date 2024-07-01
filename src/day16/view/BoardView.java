@@ -1,8 +1,11 @@
 package day16.view;
 
+import day16.controller.BoardController;
 import day16.controller.MemberController;
+import day16.model.dto.BoardDto;
 import day16.model.dto.MemberDto;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BoardView {
@@ -50,7 +53,18 @@ public class BoardView {
     }
 
     // 4. 게시판(게시물전체출력) 함수
-    public void bPrint( ) { }
+    public void bPrint( ) {
+        ArrayList<BoardDto> result =  BoardController.getInstance().bPrint( );   // 컨트롤에게 전체 게시물 조회 요청
+        System.out.println("result = " + result);
+    }
+
+    // 5. 게시물 쓰기 함수
+
+    // 6. 게시물 개별조회 함수
+
+    // 7. 게시물 삭제 함수
+
+    // 8. 게시물 수정 함수
 
 } // class end
 

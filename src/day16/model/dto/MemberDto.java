@@ -4,6 +4,9 @@ import day16.model.dao.MemberDao;
 
 public class MemberDto { // 이동객체
 
+    // - DB테이블의 회원마다 레코드/행 1개 이고 레코드/행 1개당 DTO 1개
+    // -> 회원이 여러개이면 --> DTO 여러개 --> ArrayList<MemberDto>
+
     // 1. 멤버변수 <---> DB 테이블 필드와 동일 , private 권장
     private String mid;
     private String mpwd;
