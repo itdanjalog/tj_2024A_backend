@@ -87,6 +87,7 @@ public class BoardView {
         if( result == null ){
             System.out.println(">>존재하지 않는 게시물 입니다.");  return;
         }
+        System.out.println("-------------- 게시물 -------------- ");
         System.out.println("제목 : " + result.getBtitle() );
         System.out.print("작성자 : " + result.getMno() );
         System.out.println("\t조회수 : " + result.getBview() );
@@ -95,11 +96,11 @@ public class BoardView {
         // ------- 댓글 출력 -------- //
         rPrint( bno );
         // ------------------------ //
-        System.out.print(">> 1.삭제 2.수정 3.댓글쓰기 : ");
+        System.out.print(">> 1. 글 삭제 2. 글 수정 3.댓글쓰기 : ");
         int ch = scan.nextInt();
         if( ch == 1 ){ bDelete( bno ); }
         else if( ch == 2 ){ bUpdate();  }
-        else if( ch == 3 ){ rWrite(); }
+        else if( ch == 3 ){ rWrite( bno ); }
     }
     // 7. 게시물 삭제 함수
     public void bDelete( int bno ) {
@@ -111,13 +112,37 @@ public class BoardView {
     public void bUpdate(){ }
     // 9. 댓글 출력 함수
     public void rPrint( int bno ){
-        ArrayList<ReplyDto> result =
-        BoardController.getInstance().rPrint( bno );
-        System.out.println( result );
+        ArrayList<ReplyDto> result = BoardController.getInstance().rPrint( bno );
+        // 리스트객체명.forEach( 반복변수 -> { 실행문 } )
+            // 리스트내 요소들을 하나씩 반복변수에 대입 반복 처리
+        System.out.println("-------------- 댓글 -------------- ");
+        result.forEach( reply -> {
+            System.out.printf( "%s %d %s  \n" ,
+                    reply.getRdate() , reply.getMno() ,  reply.getRcontent()  );
+        });
+        // 1.
+        System.out.println(".　　　　　 　n__r 、\n" +
+                "　　　　　 /)・ ェ・)/)\n" +
+                "　　　 _／　　￣￣　＼\n" +
+                "　　／　　　　　　　　 ヽ\n" +
+                "　/　　　　●　　　　　●ヽ\n" +
+                "　!　　　　　　 　　 ▼　　l\n" +
+                "　ヽ_ 　 　　　 　　 人 　 ノ\n" +
+                "　　　ﾞﾞーＪ――――Ｊ\n");
     }
 
     // 10. 댓글 쓰기 함수
-    public void rWrite(){ }
+    public void rWrite( int bno ){
+        // 위에서 next() 후 엔터 쳤을때 scan객체에 엔터/개행 기록이 남아있기 때문에 nextLine() 인식해서 입력했다는걸로 간주
+        // - 해결방안 : next() nextLine() 사이에 의미 없는 scan.nextLine(); 코드 작성
+        scan.nextLine();
+        System.out.print("댓글 내용 : ");   String rcontent = scan.nextLine();
+        ReplyDto replyDto = new ReplyDto();
+        replyDto.setBno( bno ); replyDto.setRcontent( rcontent );
+        boolean result = BoardController.getInstance().rWrite( replyDto );
+        if( result ){  System.out.println(">> 댓글 작성 성공 "); }
+        else{ System.out.println(">> 댓글 작성 실패  "); }
+    }
 
 } // class end
 

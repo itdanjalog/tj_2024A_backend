@@ -120,7 +120,19 @@ public class BoardDao {
         }  catch (Exception e ){ System.out.println( e );  }
         return list; // 리스트 반환
     }
-
+    // 10. 댓글 쓰기 함수
+    public boolean rWrite( ReplyDto replyDto ){
+        try {
+            String sql = "insert into reply(rcontent,mno,bno)values(?,?,?)";
+            ps = conn.prepareStatement(sql);
+            ps.setString( 1 , replyDto.getRcontent() );
+            ps.setInt( 2 , replyDto.getMno() );
+            ps.setInt( 3 , replyDto.getBno() );
+            int count = ps.executeUpdate();
+            if( count == 1 ){ return true; }
+        }catch (Exception e ){ System.out.println( e ); }
+        return false;
+    }
 }
 
 

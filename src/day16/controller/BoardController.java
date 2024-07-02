@@ -48,6 +48,13 @@ public class BoardController {
         return BoardDao.getInstance().rPrint( bno );
     }
 
+    // 10. 댓글 쓰기 함수
+    public boolean rWrite( ReplyDto replyDto ){
+        // - 현재 로그인된 회원의 번호 를 dto 대입 , 즉) 작성자 회원번호
+        replyDto.setMno( MemberController.mcontrol.loginMno );
+        return BoardDao.getInstance().rWrite( replyDto );
+    }
+
 }
 
 
