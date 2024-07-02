@@ -116,6 +116,24 @@ select * from reply where bno = 1; # 게시물번호가 '1'인 게시물의 작�
 
 # 댓글 쓰기 
 
+# 게시물 출력
+use day06;	select * from board;
+# 게시물 출력시 mno 가 아닌 mid 출력 
+	# 1. 두 테이블을 출력한다.
+select * from board , member;
+	# 2. 두 테이블의 관계 기준으로 (내부/교집합)조인한다.
+select * from board , member where board.mno = member.mno;
+select * from board natural join member;
+select * from board join member on board.mno = member.mno;
+select * from board join member using( mno );
+select * from board inner join member on board.mno = member.mno;
+	# 테이블명을 간소화 할때 : 별칭 , 테이블명 뒤에 별칭/별명 작성 
+select * from board b inner join member m on b.mno = m.mno;
+
+
+
+
+
 
 
 
