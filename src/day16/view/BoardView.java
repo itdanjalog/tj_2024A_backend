@@ -133,6 +133,13 @@ public class BoardView {
 
     // 10. 댓글 쓰기 함수
     public void rWrite( int bno ){
+        // - 만약에 코드 상황 상 로그인후 댓글쓰기 가 아니였다면
+            // 로그인상태를 확인후 댓글 쓰기 진행
+        if( !MemberController.mcontrol.loginState() ){
+            System.out.println(">>로그인후 가능합니다.");
+            return;
+        }
+
         // 위에서 next() 후 엔터 쳤을때 scan객체에 엔터/개행 기록이 남아있기 때문에 nextLine() 인식해서 입력했다는걸로 간주
         // - 해결방안 : next() nextLine() 사이에 의미 없는 scan.nextLine(); 코드 작성
         scan.nextLine();

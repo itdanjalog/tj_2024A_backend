@@ -19,13 +19,15 @@ public class MemberController {
     public int loginMno = 0;
     // 2-2 : 로그아웃 함수
     public void logout(){ loginMno = 0;  }
+    // 2-3 : 현재 로그인 상태 반환 함수
+    public boolean loginState(){
+        return loginMno == 0 ? false : true;
+    }
     // 2. 로그인 함수
     public boolean login( MemberDto memberDto ){
         loginMno = MemberDao.mdao.login( memberDto );
         return loginMno == 0 ? false : true;
     } // m end
-
-
 
     // 3. 아이디찾기 화면 함수
     public String findId( MemberDto memberDto ){
