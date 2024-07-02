@@ -2,6 +2,7 @@ package day16.controller;
 
 import day16.model.dao.BoardDao;
 import day16.model.dto.BoardDto;
+import day16.model.dto.ReplyDto;
 
 import java.util.ArrayList;
 
@@ -42,6 +43,10 @@ public class BoardController {
     // 8. 게시물 수정 함수
     public void bUpdate(){ }
 
+    // 9. 댓글 출력 함수
+    public ArrayList<ReplyDto> rPrint(int bno ) {
+        return BoardDao.getInstance().rPrint( bno );
+    }
 
 }
 

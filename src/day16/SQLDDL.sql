@@ -101,6 +101,26 @@ update member set mname = '유재석' , mphone = '010-9999-9999' where mno = 0;
 select * from board;
 # 2. 개별 조회 ( 조건 )
 select * from board where bno = 3;	# 3번 게시물 개별 조회
+
+# 삭제 
+delete from board where bno = 0 ; # 0번 게시물을 삭제 
+# 작성자번호 가 0 이면서 게시물번호가 0 인 게시물/레코드 삭제
+delete from board where bno = 0 and mno = 0; 	
+
+# 수정 
+
+# 댓글 출력/조회
+select * from reply; # 댓글 전체 출력 
+select * from reply where mno = 1; # 회원번호가 '1'인 회원이 작성한 댓글들
+select * from reply where bno = 1; # 게시물번호가 '1'인 게시물의 작성된 댓글들
+
+# 댓글 쓰기 
+
+
+
+
+
+
  
 
 

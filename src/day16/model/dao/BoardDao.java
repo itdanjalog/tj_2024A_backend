@@ -2,6 +2,7 @@ package day16.model.dao;
 
 import day16.controller.MemberController;
 import day16.model.dto.BoardDto;
+import day16.model.dto.ReplyDto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -98,8 +99,26 @@ public class BoardDao {
     }
 
     // 8. 게시물 수정 함수
-    public void bUpdate(){
+    public void bUpdate(){}
 
+    // 9. 댓글 출력 함수
+    public ArrayList<ReplyDto> rPrint(int bno ) {
+        ArrayList<ReplyDto> list = new ArrayList<>(); // 여러개 ReplayDto 담을 리스트
+        try{ // 0.예외처리
+            String sql = "select * from reply where bno = ? ";// 1. SQL 작성
+            ps = conn.prepareStatement(sql); // 2. SQL 기재
+            ps.setInt( 1 , bno );// 3. 기재된 SQL 의 ? 매개변수 값 대입
+            rs = ps.executeQuery(); // 4. sql 실행 후 결과 반환
+            while ( rs.next() ){    // 5. 결과에 따른 처리 , rs.next() : 결과에서 다음 레코드 이동
+                // - rs.get타입( "필드명" ) , rs.get타입( 필드번호 ) : 두 가지 방법 가능.
+                ReplyDto replyDto = new ReplyDto(
+                        rs.getString( "rcontent" ) , rs.getString( 2 ) ,
+                        rs.getInt( 3 ) , rs.getInt( 4 ) , rs.getInt( 5 ) );
+                // 생성된 dto를 리스트에 담기
+                list.add( replyDto );
+            }
+        }  catch (Exception e ){ System.out.println( e );  }
+        return list; // 리스트 반환
     }
 
 }
