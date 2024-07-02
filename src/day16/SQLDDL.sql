@@ -130,6 +130,14 @@ select * from board inner join member on board.mno = member.mno;
 	# 테이블명을 간소화 할때 : 별칭 , 테이블명 뒤에 별칭/별명 작성 
 select * from board b inner join member m on b.mno = m.mno;
 
+# 댓글 출력
+select * from reply;
+select * from reply r inner join member m on r.mno = m.mno;
+# 조건 
+select * from reply r inner join member m on r.mno = m.mno where r.bno = 1;
+
+
+#
 
 
 

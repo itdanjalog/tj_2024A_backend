@@ -96,11 +96,13 @@ public class BoardView {
         // ------- 댓글 출력 -------- //
         rPrint( bno );
         // ------------------------ //
-        System.out.print(">> 1. 글 삭제 2. 글 수정 3.댓글쓰기 : ");
+        System.out.print(">> 0.뒤로가기 1. 글 삭제 2. 글 수정 3.댓글쓰기 : ");
         int ch = scan.nextInt();
+
         if( ch == 1 ){ bDelete( bno ); }
         else if( ch == 2 ){ bUpdate();  }
         else if( ch == 3 ){ rWrite( bno ); }
+        else if( ch == 0 ){ return; }
     }
     // 7. 게시물 삭제 함수
     public void bDelete( int bno ) {
@@ -117,8 +119,8 @@ public class BoardView {
             // 리스트내 요소들을 하나씩 반복변수에 대입 반복 처리
         System.out.println("-------------- 댓글 -------------- ");
         result.forEach( reply -> {
-            System.out.printf( "%s %d %s  \n" ,
-                    reply.getRdate() , reply.getMno() ,  reply.getRcontent()  );
+            System.out.printf( "%s %s %s  \n" ,
+                    reply.getRdate() , reply.getMid() ,  reply.getRcontent()  );
         });
         // 1.
         System.out.println(".　　　　　 　n__r 、\n" +

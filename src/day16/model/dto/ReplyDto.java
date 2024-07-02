@@ -11,6 +11,11 @@ public class ReplyDto {
     private int bno;
     private int rno;
 
+    // + 작성자 아이디
+    private String mid;
+    public String getMid() {  return mid;}
+    public void setMid(String mid) {this.mid = mid;}
+
     // 2.
     public ReplyDto(){}
     public ReplyDto(String rcontent, String rdate, int mno, int bno, int rno) {

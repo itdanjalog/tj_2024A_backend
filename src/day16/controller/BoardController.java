@@ -32,6 +32,8 @@ public class BoardController {
 
     // 6. 게시물 개별조회 함수
     public BoardDto bView( int bno ){
+        // 해당 게시물 조회수 처리
+        BoardDao.getInstance().viewIncrease( bno );
         return BoardDao.getInstance().bView( bno );
     }
 
