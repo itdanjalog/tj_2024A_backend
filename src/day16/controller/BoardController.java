@@ -57,6 +57,12 @@ public class BoardController {
         return BoardDao.getInstance().rWrite( replyDto );
     }
 
+    // 12.
+    public ArrayList<BoardDto> search(String title){
+        return BoardDao.getInstance().search(title);
+    }   //  search 메소드 end
+
+
 }
 
 

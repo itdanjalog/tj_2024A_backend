@@ -62,11 +62,30 @@ public class BoardView {
             System.out.printf("%2d\t%2d\t%10s\t%10s\t%s \n" ,
              dto.getBno() , dto.getBview() , dto.getBdate() , dto.getMid() , dto.getBtitle() );
         } );
-        System.out.print(" 0.글쓰기 1~:개별글(번호)조회: ");
+        System.out.print(" -1:제목검색 0.글쓰기 1~:개별글(번호)조회: ");
         int ch = scan.nextInt();
         if( ch == 0 ){ bWrite(); }
         else if ( ch >= 1 ){ bView( ch ); }
+        else if( ch == -1 ){ search(); }
     }
+    // 12. 제목 검색 함수
+    public void search(){
+        scan.nextLine();
+        System.out.println(" >> 찾을 제목을 입력해주세요. << ");
+        String title = scan.nextLine();
+        ArrayList<BoardDto> result = BoardController.getInstance().search(title);
+        System.out.println(result);
+        if(result.isEmpty()){
+            System.out.println(" 찾는 게시물이 없습니다.");
+        }else{
+            System.out.println("번호\t 조회수\t 작성일\t\t\t제목 \t작성자");
+            result.forEach( dto -> {
+                System.out.printf("%2d\t%2d\t%10s\t%10s\t%s \n" ,
+                        dto.getBno() , dto.getBview() , dto.getBdate() , dto.getMid() , dto.getBtitle() );
+            } );
+        }
+    }
+
     // 5. 게시물 쓰기 함수
     public void bWrite() {
         scan.nextLine(); // 1. 입력받기
