@@ -84,6 +84,13 @@ select mnumber + 3 더하기 , mnumber - 3 빼기 , mnumber * 3 곱하기 , 		# 
 		mnumber / 3 나누기 , mnumber div 3 몫 , mnumber mod 3 나머지 from member ;
 select mid 기존필드 , 3+3 새로운필드 from member;				# 검색시 연산 결과를 새로운 필드로 조회 가능한데. 
 # 관례적으로 연산식/통계 관련된 필드는 create table 할때 포함하지 하지 않는다. 
+
+select * from member where mphone1 = '';	# 공백 검색 
+select * from member where mphone1 = ' ';	# 띄어쓰기 하나 들어간 데이터 검색 
+select * from member where mphone1 = null;	# null 검색이 안된다.*
+select * from member where mphone1 is null;	# is null 검색이 된다.
+select * from member where mphone1 is not null;	# null 이 아닌 검색 
+
 /*
 	SQL 연산자 
 		1. 산술연산자 : +더하기 , -빼기 , *곱하기 , /나누기 , div몫 , mod나머지 
@@ -94,14 +101,49 @@ select mid 기존필드 , 3+3 새로운필드 from member;				# 검색시 연산
                 -필드명 in ( 값1 , 값2 , 값3 ) : 여러 값 중에 하나라도 포함하면 조회
 					- 필드명 not in ( 값1 , 값2 , 값3 ) : 포함하지 않는 
 				-패턴 비교 검색 : 필드명 like 패턴 
-					1. % : 모든 문자수 대응 					2. _ :  개수만큼 문자수 대응 
-					-  필드명 like '값%' : 값으로 시작하는 		- 필드명 like '값_' : 값으로 시작하는 두글자 인 
+					1. % : 모든 문자수 대응 						2. _ :  개수만큼 문자수 대응 
+					-  필드명 like '값%' : 값으로 시작하는 			- 필드명 like '값_' : 값으로 시작하는 두글자 인 
 					-  필드명 like '%값' : 값으로 끝나는			- 필드명 like '__값' : 값으로 끝나는 세글자 인 
                     -  필드명 like '%값%' : 값이 포함된 			- 필드명 like '_값_' : 두번째 글자가 값인 세글자 인
-                    
-                    
-					
+				- null 검색 
+					- 필드명 is null 
+                    - 필드면 is not null 
+		-. 복합대연산자 없음 , 증감연산자 없음
 */ 
+
+# 5. 조회 결과의 레코드를 필드 기준으로 정렬 
+	# order by 필드명 [생략]asc	: 필드기준으로 레코드를 오름차순 정렬 , 작은수->큰수 , 과거날짜->최근날짜
+	# order by 필드명 desc		: 필드기준으로 레코드를 내림차순 정렬 , 큰수 ->작은수 , 최근날짜->과거날짜
+select * from member order by mdebut;
+select * from member order by mdebut asc;
+select * from member order by mdebut desc;
+	# 정렬필드 기준이 2개 이상일때 주의할점 
+		# 첫번째 필드 정렬후 첫번째 필드내 동일한 값이 있을경우 동일한 값 중에서 두번째 정렬 실행
+select * from member order by maddr desc , mdebut asc ;
+
+# 6. 조회 결과 레코드 수 제한 
+	# limit 레코드수 
+    # limit 시작레코드번호(0~) , 출력개수 
+select * from member limit 2;	# 검색 결과의 레코드를 위에서부터 2개만 출력 제한 
+select * from member limit 0 , 3;	# 0(첫번째)레코드 부터 3개 출력 제한 
+select * from member limit 1 , 2;	# 1(두번째)레코드 부터 2개 출력 제한
+select * from member order by mheight desc limit 3;	# mheight의 필드값이 상위 3개 레코드 검색
+
+# 7. 검색된 필드의 중복 제거 : distinct
+select maddr from member;				# 모든 주소 검색 
+select distinct maddr from member;		# 모든 주소에서 중복 제거 검색 
+
+# select 에서 where절,order절,limit절 동시에 작성시에는 순서가 존재한다.
+# select 필드명 from 테이블명 where 조건절 order by 필드명 [정렬기준] limit 레코드제한수
+
+
+
+ 
+
+
+
+
+
 
 
 
