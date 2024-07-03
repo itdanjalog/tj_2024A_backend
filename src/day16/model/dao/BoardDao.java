@@ -156,7 +156,7 @@ public class BoardDao {
             // String sql = "select * from board where btitle like '%"+title+"%' "; [ 연결연산자 ] O
             // String sql = "select * from board where bview like %?%";             [ x ]
             // String sql = "select * from board where bview like %3%";             [ x ]
-            String sql = "select * from board where btitle like CONCAT( '%' , ? '%')";
+            String sql = "select * from board where btitle like CONCAT( '%' , ? , '%')";
             // [ O ] SQL 제공 하는 CONCAT( '문자열' , '문자열' , '문자열' ) 문자열 연결 함수
             ps = conn.prepareStatement(sql);
             ps.setString( 1 , title);
